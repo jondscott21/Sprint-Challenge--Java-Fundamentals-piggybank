@@ -10,6 +10,7 @@ public class Main
         DecimalFormat fp = new DecimalFormat("$###,###.00");
         
         ArrayList<Money> piggybank = new ArrayList<>();
+        double totalValue = 0;
 
         piggybank.add(new Quarter());
         piggybank.add(new Dime());
@@ -20,6 +21,11 @@ public class Main
         piggybank.add(new Penny(10));
 
         piggybank.forEach((m) -> System.out.println(m.getTotal()));
-        piggybank.forEach((m) -> System.out.println("The piggy bank holds " + fp.format(m.getTotalValue())));
+        // piggybank.forEach((m) -> totalValue += m.getTotalValue());
+        for (Money m : piggybank) {
+            totalValue += m.getTotalValue();
+        }
+
+        System.out.println("The piggy bank holds " + fp.format(totalValue));
     }
 }
