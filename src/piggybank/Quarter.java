@@ -48,13 +48,16 @@ public class Quarter extends Money
     double removeTotalValue(double val)
     {
         for (int i = 0; i < total; total--) {
-            if (val > getTotalValue())
+            if (val >= getTotalValue())
             {
-                System.out.println(total + " Quarters(s)");
-               val = val - getValue();
+                val = val - value;
+                val = roundAvoid(val, 2);
+            } else
+            {
+                
             }
         }
-        System.out.println("sub amount" + val);
+        val = roundAvoid(val, 2);
         return val;
     }
 }

@@ -31,12 +31,26 @@ public class Main
 
         // piggybank.sort((m1, m2) -> (int) (m2.getValue() - m1.getValue()));
         // piggybank.forEach((m) -> System.out.println(m.printTotal()));
+        double remove = 1.50;
         for (Money m : piggybank) {
-            m.removeTotalValue(1.50);
+           remove =  m.removeTotalValue(remove);
+           
         }
+        totalValue = 0;
+        
+
+        for (int i = 0; i < piggybank.size(); i++) {
+            if (piggybank.get(i).getTotal() == 0) {
+                piggybank.remove(i);
+                i--;
+            }
+        }
+
         piggybank.forEach((m) -> System.out.println(m.printTotal()));
         for (Money m : piggybank) {
             totalValue += m.getTotalValue();
         }
+
+        System.out.println("The piggy bank holds " + fp.format(totalValue));
     }
 }

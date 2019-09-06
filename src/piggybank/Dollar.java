@@ -2,7 +2,7 @@ package piggybank;
 
 public class Dollar extends Money
 {
-    private double value = 1.00;
+    private int value = 1;
     private int total = 1;
 
     public Dollar()
@@ -42,19 +42,16 @@ public class Dollar extends Money
     double removeTotalValue(double val)
     {
         for (int i = 0; i < total; total -= 1) {
-            // System.out.println(total + " Quarters(s)");
-            // System.out.println(val);
-            if (val > getTotalValue())
+            if (val >= value)
             {
-                System.out.println(total + " Dollar(s)");
-                System.out.println(val);
                 val = val - value;
+                val = roundAvoid(val, 2);
             } else
             {
                 break;
             }
         }
-        System.out.println("sub amount" + val);
+        val = roundAvoid(val, 2);
         return val;
     }
 }

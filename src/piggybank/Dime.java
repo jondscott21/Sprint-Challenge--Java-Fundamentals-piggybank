@@ -46,12 +46,17 @@ public class Dime extends Money
     @Override
     double removeTotalValue(double val)
     {
-        for (int i = 0; i < total; total--) {
-            if (val > getTotalValue())
+        for (int i = 0; i < total; total -= 1) {
+            if (val >= value)
             {
-               val = val - getValue();
+                val = val - value;
+                val = roundAvoid(val, 2);
+            } else
+            {
+                break;
             }
         }
+        val = roundAvoid(val, 2);
         return val;
     }
 }
