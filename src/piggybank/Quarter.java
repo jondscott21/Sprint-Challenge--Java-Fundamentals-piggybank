@@ -21,7 +21,7 @@ public class Quarter extends Money
     }
 
     @Override
-    public String getTotal() 
+    public String printTotal() 
     {
         if (total == 1)
         {
@@ -31,10 +31,30 @@ public class Quarter extends Money
             return total + " Quarters";
         }
     }
+    
+    @Override
+    public int getTotal() {
+        
+        return total;
+    }
 
     @Override
     double getTotalValue() 
     {
         return value * total;
+    }
+
+    @Override
+    double removeTotalValue(double val)
+    {
+        for (int i = 0; i < total; total--) {
+            if (val > getTotalValue())
+            {
+                System.out.println(total + " Quarters(s)");
+               val = val - getValue();
+            }
+        }
+        System.out.println("sub amount" + val);
+        return val;
     }
 }

@@ -21,7 +21,7 @@ public class Penny extends Money
     }
 
     @Override
-    public String getTotal() 
+    public String printTotal() 
     {
         if (total == 1)
         {
@@ -33,8 +33,26 @@ public class Penny extends Money
     }
 
     @Override
+    public int getTotal() {
+        
+        return total;
+    }
+
+    @Override
     double getTotalValue() 
     {
         return value * total;
+    }
+
+    @Override
+    double removeTotalValue(double val)
+    {
+        for (int i = 0; i < total; total--) {
+            if (val > getTotalValue())
+            {
+               val = val - getValue();
+            }
+        }
+        return val;
     }
 }

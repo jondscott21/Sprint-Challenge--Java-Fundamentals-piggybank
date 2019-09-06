@@ -1,6 +1,8 @@
 package piggybank;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.text.DecimalFormat;
 
 public class Main 
@@ -20,12 +22,21 @@ public class Main
         piggybank.add(new Dollar());
         piggybank.add(new Penny(10));
 
-        piggybank.forEach((m) -> System.out.println(m.getTotal()));
-        // piggybank.forEach((m) -> totalValue += m.getTotalValue());
+        piggybank.forEach((m) -> System.out.println(m.printTotal()));
         for (Money m : piggybank) {
             totalValue += m.getTotalValue();
         }
 
         System.out.println("The piggy bank holds " + fp.format(totalValue));
+
+        // piggybank.sort((m1, m2) -> (int) (m2.getValue() - m1.getValue()));
+        // piggybank.forEach((m) -> System.out.println(m.printTotal()));
+        for (Money m : piggybank) {
+            m.removeTotalValue(1.50);
+        }
+        piggybank.forEach((m) -> System.out.println(m.printTotal()));
+        for (Money m : piggybank) {
+            totalValue += m.getTotalValue();
+        }
     }
 }
